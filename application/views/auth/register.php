@@ -17,6 +17,54 @@
         </tr>
         <tr>
             <td>
+                <label for="nik">NIK</label>
+            </td>
+            <td>
+                <input type="text" name="nik" id="nik">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="tempat_lahir">Tempat Lahir</label>
+            </td>
+            <td>
+                <input type="text" name="tempat_lahir" id="tempat_lahir">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="tanggal_lahir">Tanggal Lahir</label>
+            </td>
+            <td>
+                <input type="date" name="tanggal_lahir" id="tanggal_lahir">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="jenis_kelamin">Jenis Kelamin</label>
+            </td>
+            <td>
+                <input type="text" name="jenis_kelamin" id="jenis_kelmain">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="agama">Agama</label>
+            </td>
+            <td>
+                <input type="text" name="agama" id="agama">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="alamat">Alamat</label>
+            </td>
+            <td>
+                <input type="text" name="alamat" id="alamat">
+            </td>
+        </tr>
+        <tr>
+            <td>
                 <label for="email">email</label>
             </td>
             <td>

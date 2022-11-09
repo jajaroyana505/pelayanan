@@ -1,5 +1,5 @@
 <h1>Halaman Index</h1>
-<h3>Hallo <?= $user['nama']; ?>, </h3>
+<h3>Hallo , </h3>
 <h3>Selamat datang</h3>
 
 
@@ -9,11 +9,7 @@
             <img src="<?= base_url('assets/img/'); ?><?= $user['image']; ?>" alt="" width="100">
         </td>
     </tr>
-    <tr>
-        <td>Nama</td>
-        <td>:</td>
-        <td><?= $user['nama'] ?></td>
-    </tr>
+
     <tr>
         <td>Email</td>
         <td>:</td>

@@ -57,14 +57,14 @@ class Auth extends CI_Controller
         }
         //membuat rule untuk inputan nama agar tidak boleh kosong dengan membuat pesan error dengan
         //bahasa sendiri yaitu 'Nama Belum diisi'
-        $this->form_validation->set_rules(
-            'nama',
-            'Nama Lengkap',
-            'required',
-            [
-                'required' => 'Nama Belum diis!!'
-            ]
-        );
+        // $this->form_validation->set_rules(
+        //     'nama',
+        //     'Nama Lengkap',
+        //     'required',
+        //     [
+        //         'required' => 'Nama Belum diis!!'
+        //     ]
+        // );
         //membuat rule untuk inputan email agar tidak boleh kosong, tidak ada spasi, format email harus valid
         //dan email belum pernah dipakai sama user lain dengan membuat pesan error dengan bahasa sendiri
         //yaitu jika format email tidak benar maka pesannya 'Email Tidak Benar!!'. jika email belum diisi,
@@ -104,25 +104,45 @@ class Auth extends CI_Controller
             $this->load->view('auth/register');
             $this->load->view('templates/footer');
         } else {
+
+            // insert data ke table user
             $email = $this->input->post('email', true);
-            $data = [
-                'nama' => htmlspecialchars($this->input->post('nama', true)),
+            $data_user = [
+                // 'nama' => htmlspecialchars($this->input->post('nama', true)),
                 'email' => htmlspecialchars($email),
                 'image' => 'default.jpg',
                 'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
                 'role_id' => 1,
             ];
-            $this->ModelUser->simpanData($data); //menggunakan model
+            $this->ModelUser->simpanData($data_user); //menggunakan model
 
+            // insert data ke table penduduk
+            $data_penduduk = [
+                'nik' => $this->input->post('nik'),
+                'nama' => $this->input->post('nama'),
+                'tempat_lahir' => $this->input->post('tempat_lahir'),
+                'tanggal_lahir' => $this->input->post('tanggal_lahir'),
+                'jenis_kelamin' => $this->input->post('jenis_kelamin'),
+                'agama' => $this->input->post('agama'),
+                'alamat' => $this->input->post('alamat')
+
+
+            ];
             $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-message" role="alert">Selamat!! akun member anda sudah dibuat. Silahkan Aktivasi Akun anda</div>');
             redirect('auth');
         }
+    }
+
+    function data_diri()
+    {
+        $this->load->view('templates/header');
+        $this->load->view('user/data_diri');
+        $this->load->view('templates/footer');
     }
     function logout()
     {
         $this->session->unset_userdata('email');
         $this->session->unset_userdata('role_id');
-
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Kamu Telah Logout!');
         redirect('auth');
     }
