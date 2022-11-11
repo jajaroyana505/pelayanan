@@ -9,8 +9,8 @@ class ModelPenduduk extends CI_Model
     {
         return $this->db->get_where('penduduk', $where);
     }
-    public function getUserWhere($where = null)
+    public function getPendudukWhere($where = null)
     {
-        return $this->db->get_where('prnduduk', $where);
+        return $this->db->get_where('penduduk', $where);
     }
 }

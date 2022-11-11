@@ -57,14 +57,86 @@ class Auth extends CI_Controller
         }
         //membuat rule untuk inputan nama agar tidak boleh kosong dengan membuat pesan error dengan
         //bahasa sendiri yaitu 'Nama Belum diisi'
-        // $this->form_validation->set_rules(
-        //     'nama',
-        //     'Nama Lengkap',
-        //     'required',
-        //     [
-        //         'required' => 'Nama Belum diis!!'
-        //     ]
-        // );
+        $this->form_validation->set_rules(
+            'nama',
+            'Nama Lengkap',
+            'required',
+            [
+                'required' => 'Nama Belum diis!!'
+            ]
+        );
+
+        // membuat role untuk nik
+        $this->form_validation->set_rules(
+            'nik',
+            'Nik',
+            'required|numeric|trim|max_length[16]|min_length[16]|is_unique[penduduk.nik]',
+            [
+                'valid_email' => 'Email Tidak Benar!!',
+                'required' => 'Nik Belum diisi!!',
+                'is_unique' => 'NIK Sudah Terdaftar!',
+                'min_length' => 'NIK terlalu Pendek',
+                'max_length' => 'NIK terlalu Panjang',
+                'numeric' => 'NIK harus berupa angka'
+            ]
+        );
+
+        // validasi tempat lahir
+        $this->form_validation->set_rules(
+            'tempat_lahir',
+            'Tempt_Lahir',
+            'required',
+            [
+                'required' => 'Tempat lahir diis!!'
+            ]
+        );
+
+        // tanggal lahir
+        $this->form_validation->set_rules(
+            'tanggal_lahir',
+            'Tanggal_Lahir',
+            'required',
+            [
+                'required' => 'Tanggal lahir diisi!!'
+            ]
+        );
+
+        // validasi jenis kelamin
+        $this->form_validation->set_rules(
+            'jenis_kelamin',
+            'Jenisa_Kelamin',
+            'required',
+            [
+                'required' => 'Jenis kelamin diisi!!'
+            ]
+        );
+
+
+
+
+        // validasi agama
+        $this->form_validation->set_rules(
+            'agama',
+            'Agama',
+            'required',
+            [
+                'required' => 'Agama diisi!!'
+            ]
+        );
+
+
+        // validai alamat
+        $this->form_validation->set_rules(
+            'alamat',
+            'Alamat',
+            'required',
+            [
+                'required' => 'Alamat lahir diisi!!'
+            ]
+        );
+
+
+
         //membuat rule untuk inputan email agar tidak boleh kosong, tidak ada spasi, format email harus valid
         //dan email belum pernah dipakai sama user lain dengan membuat pesan error dengan bahasa sendiri
         //yaitu jika format email tidak benar maka pesannya 'Email Tidak Benar!!'. jika email belum diisi,
@@ -105,29 +177,33 @@ class Auth extends CI_Controller
             $this->load->view('templates/footer');
         } else {
 
-            // insert data ke table user
-            $email = $this->input->post('email', true);
-            $data_user = [
-                // 'nama' => htmlspecialchars($this->input->post('nama', true)),
-                'email' => htmlspecialchars($email),
-                'image' => 'default.jpg',
-                'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
-                'role_id' => 1,
-            ];
-            $this->ModelUser->simpanData($data_user); //menggunakan model
-
             // insert data ke table penduduk
+            $nik = $this->input->post('nik');
             $data_penduduk = [
-                'nik' => $this->input->post('nik'),
+                'nik' => $nik,
                 'nama' => $this->input->post('nama'),
                 'tempat_lahir' => $this->input->post('tempat_lahir'),
                 'tanggal_lahir' => $this->input->post('tanggal_lahir'),
                 'jenis_kelamin' => $this->input->post('jenis_kelamin'),
                 'agama' => $this->input->post('agama'),
                 'alamat' => $this->input->post('alamat')
-
-
             ];
+            $this->ModelPenduduk->simpanData($data_penduduk); //menggunakan model
+            // insert data ke table user
+
+            $row = $this->ModelPenduduk->getPendudukWhere(['nik' => $nik])->row_array();
+            $id = $row['id'];
+            $email = $this->input->post('email', true);
+            $data_user = [
+                'email' => htmlspecialchars($email),
+                'image' => 'default.jpg',
+                'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
+                'role_id' => 1,
+                'id_penduduk' => $id
+            ];
+            $this->ModelUser->simpanData($data_user);
+            //menggunakan model
+
             $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-message" role="alert">Selamat!! akun member anda sudah dibuat. Silahkan Aktivasi Akun anda</div>');
             redirect('auth');
         }

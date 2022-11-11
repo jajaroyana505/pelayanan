@@ -11,9 +11,29 @@
     </tr>
 
     <tr>
+        <td>Nama</td>
+        <td>:</td>
+        <td><?= $penduduk['nama'] ?></td>
+    </tr>
+    <tr>
+        <td>NIK</td>
+        <td>:</td>
+        <td><?= $penduduk['nik'] ?></td>
+    </tr>
+    <tr>
         <td>Email</td>
         <td>:</td>
         <td><?= $user['email'] ?></td>
+    </tr>
+    <tr>
+        <td>Jenis_kelamin</td>
+        <td>:</td>
+        <td><?= $penduduk['jenis_kelamin'] ?></td>
+    </tr>
+    <tr>
+        <td>Tanggal lahir</td>
+        <td>:</td>
+        <td><?= $penduduk['tanggal_lahir'] ?></td>
     </tr>
 </table>
 <br>

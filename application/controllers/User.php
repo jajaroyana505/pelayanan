@@ -11,6 +11,11 @@ class User extends CI_Controller
     public function index()
     {
         $data['user'] = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
+        var_dump($data['user']['id_penduduk']);
+        $data['penduduk'] = $this->ModelPenduduk->cekData(['id' => $data['user']['id_penduduk']])->row_array();
+
+        var_dump($data['penduduk']);
+        // $data['penduduk'] = $this->ModelPenduduk->cekData(['email' => this]);
 
 
         $this->load->view('templates/header');

@@ -8,6 +8,7 @@
             </td>
             <td>
                 <input type="text" name="nama" id="nama">
+                <br>
                 <?= form_error(
                     'nama',
                     '<small class="text-danger pl-3">',
@@ -21,6 +22,12 @@
             </td>
             <td>
                 <input type="text" name="nik" id="nik">
+                <br>
+                <?= form_error(
+                    'nik',
+                    '<small class="text-danger pl-3">',
+                    '</small>'
+                ); ?>
             </td>
         </tr>
         <tr>
@@ -29,6 +36,12 @@
             </td>
             <td>
                 <input type="text" name="tempat_lahir" id="tempat_lahir">
+                <br>
+                <?= form_error(
+                    'tempat_lahir',
+                    '<small class="text-danger pl-3">',
+                    '</small>'
+                ); ?>
             </td>
         </tr>
         <tr>
@@ -37,6 +50,12 @@
             </td>
             <td>
                 <input type="date" name="tanggal_lahir" id="tanggal_lahir">
+                <br>
+                <?= form_error(
+                    'tanggal_lahir',
+                    '<small class="text-danger pl-3">',
+                    '</small>'
+                ); ?>
             </td>
         </tr>
         <tr>
@@ -45,6 +64,12 @@
             </td>
             <td>
                 <input type="text" name="jenis_kelamin" id="jenis_kelmain">
+                <br>
+                <?= form_error(
+                    'jenis_kelamin',
+                    '<small class="text-danger pl-3">',
+                    '</small>'
+                ); ?>
             </td>
         </tr>
         <tr>
@@ -53,6 +78,12 @@
             </td>
             <td>
                 <input type="text" name="agama" id="agama">
+                <br>
+                <?= form_error(
+                    'agama',
+                    '<small class="text-danger pl-3">',
+                    '</small>'
+                ); ?>
             </td>
         </tr>
         <tr>
@@ -61,6 +92,12 @@
             </td>
             <td>
                 <input type="text" name="alamat" id="alamat">
+                <br>
+                <?= form_error(
+                    'alamat',
+                    '<small class="text-danger pl-3">',
+                    '</small>'
+                ); ?>
             </td>
         </tr>
         <tr>
@@ -69,6 +106,7 @@
             </td>
             <td>
                 <input type="emial" name="email" id="email">
+                <br>
                 <?= form_error(
                     'email',
                     '<small class="text-danger pl-3">',
@@ -81,7 +119,8 @@
                 <label for="password1">password1</label>
             </td>
             <td>
-                <input type="password1" name="password1" id="password1">
+                <input type="password" name="password1" id="password1">
+                <br>
                 <?= form_error(
                     'password1',
                     '<small class="text-danger pl-3">',
@@ -94,7 +133,8 @@
                 <label for="password2">password2</label>
             </td>
             <td>
-                <input type="password2" name="password2" id="password2">
+                <input type="password" name="password2" id="password2">
+                <br>
                 <?= form_error(
                     'password2',
                     '<small class="text-danger pl-3">',
