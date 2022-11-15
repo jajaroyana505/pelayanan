@@ -17,24 +17,29 @@ class User extends CI_Controller
         var_dump($data['penduduk']);
         // $data['penduduk'] = $this->ModelPenduduk->cekData(['email' => this]);
 
-
-        $this->load->view('templates/header');
+        $this->load->view('templates/header', $data);
         $this->load->view('user/profile', $data);
         $this->load->view('templates/footer');
     }
 
     public function beranda()
     {
-        $this->load->view('templates/header'); 
-        $this->load->view('user/beranda'); 
-        $this->load->view('templates/footer'); 
+        $this->load->view('templates/header');
+        $this->load->view('user/beranda');
+        $this->load->view('templates/footer');
     }
-        
+
     public function pengajuan()
     {
-        $this->load->view('templates/header'); 
-        $this->load->view('user/beranda'); 
-        $this->load->view('templates/footer'); 
+        $data['user'] = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
+
+        $data['penduduk'] = $this->ModelPenduduk->cekData(['id' => $data['user']['id_penduduk']])->row_array();
+
+        var_dump($data['penduduk']);
+        // $data['penduduk'] = $this->ModelPenduduk->cekData(['email' => this]);
+
+        $this->load->view('templates/header');
+        $this->load->view('user/beranda');
+        $this->load->view('templates/footer');
     }
-        
 }

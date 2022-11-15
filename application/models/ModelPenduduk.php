@@ -13,4 +13,8 @@ class ModelPenduduk extends CI_Model
     {
         return $this->db->get_where('penduduk', $where);
     }
+    public function getPenduduk()
+    {
+        return $this->db->get('penduduk');
+    }
 }

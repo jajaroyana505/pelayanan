@@ -5,8 +5,9 @@ class Admin extends CI_Controller
     // beranda
     public function index()
     {
-        $this->load->view('admin/header');
-        $this->load->view('admin/dashboard');
+        $data['judul'] = "dashboard";
+        $this->load->view('admin/header', $data);
+        $this->load->view('admin/dashboard', $data);
         $this->load->view('admin/footer');
     }
 
@@ -14,8 +15,9 @@ class Admin extends CI_Controller
     // profile
     public function profile()
     {
-        $this->load->view('admin/header');
-        $this->load->view('admin/profile');
+        $data['judul'] = "profile";
+        $this->load->view('admin/header', $data);
+        $this->load->view('admin/profile', $data);
         $this->load->view('admin/footer');
     }
 
@@ -23,18 +25,23 @@ class Admin extends CI_Controller
     // pengajuan
     public function pengajuan()
     {
+        $data['judul'] = "pengajuan";
         $data['pengajuan'] = $this->ModelPengajuan->getAllPengajuan();
-        $this->load->view('admin/header');
+
+        $this->load->view('admin/header', $data);
         $this->load->view('admin/pengajuan', $data);
         $this->load->view('admin/footer');
     }
 
 
+
+
     // pengaduan
     public function pengaduan()
     {
-        $data['pengaduan'] = $this->ModelPengaduan->getAll()->row_array();
-        $this->load->view('admin/header');
+        $data['judul'] = "pengajuan";
+        // $data['pengaduan'] = $this->ModelPengaduan->getAll()->row_array();
+        $this->load->view('admin/header', $data);
         $this->load->view('admin/pengaduan', $data);
         $this->load->view('admin/footer');
     }

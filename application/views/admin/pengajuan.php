@@ -9,28 +9,27 @@ var_dump($pengajuan);
             <th scope="col">Tangal</th>
             <th scope="col">Nama</th>
             <th scope="col">Jenis Surat</th>
+            <th scope="col">Status</th>
             <th scope="col">Aksi</th>
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($pengajuan as $row) : ?>
+        <?php foreach ($pengajuan as $peng) : ?>
             <tr>
-                <th><?= $row->tanggal; ?></th>
-                <td><?= $row->nama; ?></td>
+                <th><?= date('d F Y', $peng->tanggal); ?></th>
+                <td><?= $peng->nama; ?></td>
+                <td><?= $peng->nama_surat; ?></td>
                 <td>
                     <?php
-                    $kode = $row->kode_surat;
-                    if ($kode == 'SKD') {
-                        echo 'Surat Keterangan Domisili';
-                    } else if ($kode == 'SIK') {
-                        echo 'Surat Izin Keramaian';
-                    } else if ($kode == 'SKU') {
-                        echo 'Surat Izin Usaha';
+                    if ($peng->status == 1) {
+                        echo "terverivikasi";
+                    } else {
+                        echo "menunggu";
                     }
                     ?>
                 </td>
                 <td>
-                    <a href="<?= $row->id; ?>">Detail</a>
+                    <a href="<?= base_url(); ?>pengajuan/detail_pengajuan/<?= $peng->id; ?>" class="btn btn-primary">Detail</a>
                 </td>
             </tr>
         <?php endforeach; ?>
