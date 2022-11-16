@@ -1,10 +1,11 @@
 <?php
-var_dump($dataSurat);
-echo $dataSurat['nama'];
+// var_dump($dataSurat);
+// echo $dataSurat['nama'];
 ?>
 
-<h1>
-</h1>
+<h3>
+    Detail Pengajuan
+</h3><br><br>
 <div class="row">
     <div class="col-lg-6">
         <div class="card mb-4">
@@ -71,5 +72,20 @@ echo $dataSurat['nama'];
     </div>
     <div class="col-lg-6">
         <?php var_dump($dataSurat) ?>
+        <div class="row g-2">
+            <div class="col mb-2">
+                <img src="<?= base_url('assets/img/default.jpg'); ?>" alt="image 1" class="w-100 rounded-3">
+            </div>
+            <div class="col mb-2">
+                <img src="<?= base_url('assets/img/default.jpg'); ?>" alt="image 1" class="w-100 rounded-3">
+            </div>
+        </div>
+        <div class="row g-2">
+            <div class="col">
+                <img src="<?= base_url('assets/img/default.jpg'); ?>" alt="image 1" class="w-100 rounded-3">
+            </div>
+            <div class="col">
+                <img src="<?= base_url('assets/img/default.jpg'); ?>" alt="image 1" class="w-100 rounded-3">
+            </div>
+        </div>
     </div>
-</div>
