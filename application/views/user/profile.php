@@ -1,4 +1,3 @@
-<h1>Halaman Index</h1>
 <h3>Hallo , </h3>
 <h3>Selamat datang</h3>
 

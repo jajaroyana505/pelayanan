@@ -14,7 +14,7 @@ class User extends CI_Controller
         //var_dump($data['user']['id_penduduk']);
         $data['penduduk'] = $this->ModelPenduduk->cekData(['id' => $data['user']['id_penduduk']])->row_array();
 
-        var_dump($data['penduduk']);
+        //var_dump($data['penduduk']);
         // $data['penduduk'] = $this->ModelPenduduk->cekData(['email' => this]);
 
 
@@ -33,7 +33,13 @@ class User extends CI_Controller
     public function pengajuan()
     {
         $this->load->view('templates/header'); 
-        $this->load->view('user/beranda'); 
+        $this->load->view('user/pengajuan'); 
+        $this->load->view('templates/footer'); 
+    }
+    public function pengaduan()
+    {
+        $this->load->view('templates/header'); 
+        $this->load->view('user/pengaduan'); 
         $this->load->view('templates/footer'); 
     }
         
