@@ -6,7 +6,8 @@ class Pengajuan extends CI_Controller
         parent::__construct();
         cek_login();
     }
-    public function buat_pengajuan()
+
+    public function buat_pengajuan_skd()
     {
 
         //var_dump($data['user']['id_penduduk']);
@@ -62,8 +63,28 @@ class Pengajuan extends CI_Controller
             // };
 
             // $data['penduduk'] = $this->ModelPenduduk->cekData(['email' => this]);
-            $this->load->view('pengajuan/buat_pengajuan', $data);
+            $this->load->view('templates/header');
+            $this->load->view('pengajuan/buat_pengajuan_skd', $data);
+            $this->load->view('templates/footer');
         }
+    }
+    public function buat_pengajuan_sku()
+    {
+        $this->load->view('templates/header');
+        $this->load->view('pengajuan/buat_pengajuan_sku');
+        $this->load->view('templates/footer');
+    }
+    public function buat_pengajuan_sik()
+    {
+        $this->load->view('templates/header');
+        $this->load->view('pengajuan/buat_pengajuan_sik');
+        $this->load->view('templates/footer');
+    }
+    public function buat_pengajuan_sktm()
+    {
+        $this->load->view('templates/header');
+        $this->load->view('pengajuan/buat_pengajuan_sktm');
+        $this->load->view('templates/footer');
     }
     public function input_data_skd($id_surat, $id_penduduk)
     {

@@ -1,4 +1,4 @@
-<h1>Buat pengajuan</h1>
+<h1>Form Pengajuan SKD</h1>
 
 <form action="<?= base_url('pengajuan/buat_pengajuan'); ?>" method="POST">
 
